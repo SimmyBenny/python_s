@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block body %}
+<div class="container" style="text-align:center;background-color:white;margin-top:2%;">
+  <form method="POST" enctype="multipart/form-data" style="text-align:center;">
+    <h1>Update movie</h1><br>
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="Update">
+  </form>
+</div>
+{% endblock %}
