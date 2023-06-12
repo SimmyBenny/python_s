@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>KeyGen</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <!-- Bootstrap js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+</head>
+<body>
+<div class="container-fluid bg-warning" style="height:100px;width:100%;">
+    <h1 class="text-dark text-center pt-3">Random <span class="text-white">KeyGenereator</span> </h1>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-6 col-md-6">
+            <div class="card shadow w-100 mt-4 " style="width: 18rem;height:250px;">
+              <div class="card-body">
+                    <form action="{% url 'keyg' %}" method="POST">
+                        {% csrf_token %}
+                        <h5>length of key :</h5>
+                        <select name="dd" required>
+                            <option value="6" selected>6</option>
+                            <option value="8">8</option>
+                            <option value="9" >9</option>
+                            <option value="10">10</option>
+                        </select> <br><br>
+                        <label >Key Type :</label>
+                        <input type="radio" name="character" value="ch" required>Character
+                        <input type="radio" name="character" value="nm">Number
+                        <input type="radio" name="character" value="cn">AlphaNumeric
+                        <br><br><br>
+
+                        <input type="submit" value="Generate" class="btn btn-success">
+                    </form>
+              </div>
+            </div>
+
+        </div>
+        <div class="col-6">
+            <div class="card shadow w-100 mt-4 " style="width: 18rem;height:250px;">
+              <div class="card-body">
+                    <form>
+                        <h1>Generated key :</h1>
+                            <h4 class="text-success">{{ key }}</h4>
+                    </form>
+              </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
